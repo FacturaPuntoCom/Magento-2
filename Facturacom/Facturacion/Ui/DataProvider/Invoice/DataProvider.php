@@ -51,8 +51,8 @@ class DataProvider extends AbstractDataProvider
 
         $data = $this->helper->getInvoices($pagesize, $pageCurrent, $filters);
 
-        if(is_null($data)){ // Si hay algun error
-            $data = ['totalRecords' => 0, 'items' => []];
+        if(is_null($data) || (isset($data['status']) && $data['status'] == "error")){ // Si hay algun error
+            return ['totalRecords' => 0, 'items' => []];
         }
 
         if(!is_null($sorting)){
