@@ -34,22 +34,22 @@ class Factura extends AbstractHelper
 
 
     public function getInvoices($page_size, $current_page, $filters){
-        $endpoint = '/api/v3/cfdi40/list?=&type_document=factura&per_page='. $page_size. '&page=' . $current_page ;
+        $endpoint = '/v3/cfdi40/list?=&type_document=factura&per_page='. $page_size. '&page=' . $current_page ;
         return $this->apiCall('GET', $endpoint, $filters);
     }
 
     public function downloadFile($type = 'pdf', $uid){
-        $endpoint = "/api/v3/cfdi40/{$uid}/{$type}";
+        $endpoint = "/v3/cfdi40/{$uid}/{$type}";
         return $this->apiCall('GET', $endpoint, null, null, true);
     }
 
     public function sendEmail($uid){
-        $endpoint = "/api/v3/cfdi40/{$uid}/email";
+        $endpoint = "/v3/cfdi40/{$uid}/email";
         return $this->apiCall('GET', $endpoint);
     }
 
     public function getCustomerByRFC($customerRfc){
-        $endpoint = "/api/v1/clients/{$customerRfc}";
+        $endpoint = "/v1/clients/{$customerRfc}";
         $result = $this->apiCall('GET', $endpoint);
         if($result['status'] == 'success' && $result['Data']['Regimen'] != null){
             foreach($this->getRegimenes() as $key => $value){
@@ -63,7 +63,7 @@ class Factura extends AbstractHelper
     }
 
     public function getCountries(){
-        $endpoint = '/api/v3/catalogo/Pais';
+        $endpoint = '/v3/catalogo/Pais';
         $result = $this->apiCall('GET', $endpoint);
 
         $countries = array();
@@ -104,9 +104,9 @@ class Factura extends AbstractHelper
     public function createCustomer($data){
 
         if($data['method'] == 'create'){
-            $endpoint = '/api/v1/clients/create';
+            $endpoint = '/v1/clients/create';
         }else{
-            $endpoint = '/api/v1/clients/' . $data['uid'] . '/update';
+            $endpoint = '/v1/clients/' . $data['uid'] . '/update';
         }
         $params = array(
             'nombre'          => $data['g_nombre'],
@@ -191,7 +191,7 @@ class Factura extends AbstractHelper
 
     public function createInvoice($data)
     {
-        $endpoint = '/api/v3/cfdi40/create';
+        $endpoint = '/v3/cfdi40/create';
 
         $conceptos = [];
 
@@ -243,12 +243,12 @@ class Factura extends AbstractHelper
     }
 
     public function getAccountDetails(){
-        $endpoint = '/api/v1/current/account';
+        $endpoint = '/v1/current/account';
         return $this->apiCall('GET', $endpoint);
     }
 
     public function cancel($uid, $motivo, $folioSustituto){
-        $endpoint = "/api/v3/cfdi40/{$uid}/cancel";
+        $endpoint = "/v3/cfdi40/{$uid}/cancel";
         $params = ['motivo' => $motivo, 'folioSustituto' => $folioSustituto];
         return $this->apiCall('POST', $endpoint, $params);
     }
