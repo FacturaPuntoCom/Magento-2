@@ -7,7 +7,7 @@
                 <apisecret></apisecret>
                 <mode>sandbox</mode>
                 <production_url>https://api.factura.com</production_url>
-                <sandbox_url>https://sandbox.factura.com</sandbox_url>
+                <sandbox_url>https://sandbox.factura.com/api</sandbox_url>
             </facturacom_general>
             <facturacom_facturacion>
                 <serie></serie>
