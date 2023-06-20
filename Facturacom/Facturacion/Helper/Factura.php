@@ -24,7 +24,7 @@ class Factura extends AbstractHelper
         $this->scopeConfig = $scopeConfig;
 
         if($this->scopeConfig->getValue('facturacom/facturacom_general/mode', \Magento\Store\Model\ScopeInterface::SCOPE_STORE) == 'production'){
-            $this->url = "https://factura.com";
+            $this->url = "https://api.factura.com";
         } else {
             $this->url = $this->scopeConfig->getValue('facturacom/facturacom_general/sandbox_url', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
         }
