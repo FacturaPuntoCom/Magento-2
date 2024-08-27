@@ -24,7 +24,7 @@ class Download extends Action
         $uid = $this->getRequest()->getParam('uid');
         $type = $this->getRequest()->getParam('type');
 
-        $file = $this->helper->downloadFile($type, $uid);
+        $file = $this->helper->downloadFile($uid, $type);
 
         $resultRaw = $this->resultRawFactory->create();
 
