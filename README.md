@@ -1,4 +1,4 @@
-# Magento-Extension v 1.0
+# Magento-Extension v 1.0.2
 
 Esta actualización es importante, ya que con ella este Módulo es compatible con la facturación CFDI 4.0.
 
@@ -14,6 +14,8 @@ La extensión de Factura.com proporciona integración con la plataforma de factu
 Este Módulo es compatible con Magento 2, probado en versiones 2.3.6 y 2.4.1
 
 Si requieres más información acerca de la instalación y el uso de este módulo para Magento, puedes contactarnos en https://factura.com/contacto o enviar un correo directamente a soporte@factura.com y con gusto te ayudaremos en lo que necesites.
+
+1.0.2 Se ha corregido el orden de los parametros en la función de descarga
 
 1.0.1 Se ha corregido el namespace de la clase DataProvider.php que causaba conflicto con sistemas operativos Linux
 
