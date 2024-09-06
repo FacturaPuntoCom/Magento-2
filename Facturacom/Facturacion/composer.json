@@ -2,7 +2,7 @@
     "name": "facturacom/facturacion",
     "description": "Este módulo permite a los clientes de los usuarios de factura.com crear las facturas de sus pedidos realizados en la tienda.",
     "type": "magento2-module",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "license": [
       "OSL-3.0",
       "AFL-3.0"

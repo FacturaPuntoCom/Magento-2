@@ -38,7 +38,7 @@ class Factura extends AbstractHelper
         return $this->apiCall('GET', $endpoint, $filters);
     }
 
-    public function downloadFile($type = 'pdf', $uid){
+    public function downloadFile($uid, $type = 'pdf'){
         $endpoint = "/v3/cfdi40/{$uid}/{$type}";
         return $this->apiCall('GET', $endpoint, null, null, true);
     }
