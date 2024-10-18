@@ -11,6 +11,7 @@ use Facturacom\Facturacion\Helper\Factura;
 class Download extends Action
 {
 	protected $resultRawFactory;
+    protected $helper;
 
 	public function __construct(Context $context, RawFactory $resultRawFactory, Factura $helper)
 	{

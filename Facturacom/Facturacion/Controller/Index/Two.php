@@ -10,6 +10,10 @@ use Facturacom\Facturacion\Helper\Cookie;
 
 class Two extends Action
 {
+    protected $context;
+    protected $jsonResultFactory;
+    protected $facturaHelper;
+    protected $cookieHelper;
 
     public function __construct(
         Context $context, 
