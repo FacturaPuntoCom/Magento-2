@@ -9,6 +9,9 @@ use Facturacom\Facturacion\Helper\Factura;
 
 class DataProvider extends AbstractDataProvider
 {
+    protected $searchCriteriaBuilder;
+    protected $helper;
+    protected $request;
 
     public function __construct(
         SearchCriteriaBuilder $searchCriteriaBuilder,

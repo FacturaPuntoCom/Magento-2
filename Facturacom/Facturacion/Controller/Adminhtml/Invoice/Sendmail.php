@@ -13,6 +13,8 @@ class Sendmail extends Action
 {
 
     protected $_messageManager;
+    protected $helper;
+    protected $jsonResultFactory;
 
     public function __construct(Context $context, ManagerInterface $messageManager, Factura $helper, JsonFactory $jsonResultFactory) {
         parent::__construct($context);

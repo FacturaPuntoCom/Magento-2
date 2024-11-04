@@ -16,6 +16,16 @@ use Facturacom\Facturacion\Helper\Cookie;
 class One extends Action
 {
 
+    protected $jsonResultFactory;
+    protected $scopeConfig;
+    protected $productRepository;
+    protected $orderFactory;
+    protected $facturaHelper;
+    protected $cookieHelper;
+    protected $taxItem;
+    protected $storeManager;
+    
+
     public function __construct(
         Context $context, 
         JsonFactory $jsonResultFactory,
@@ -80,7 +90,7 @@ class One extends Action
                 $result->setData(['error' => 400, 'message' => 'El pedido aún no se encuentra listo para facturar. Por favor espere a que su pedido sea enviado.']);
                 return $result;
             } 
-            
+
             // Validamos los dias de tolerancia
             if(!$this->validateDayOff($order['updated_at'])) { // <-- Validamos que los dias de tolerancia
                 $result->setData(['error' => 400, 'message' => 'La fecha para facturar tu pedido ya pasó!']);
@@ -88,15 +98,14 @@ class One extends Action
             } 
 
             $customer = $this->facturaHelper->getCustomerByRFC($rfc);
-
-
+            
 
             // Debemos obtener la configuración de la tienda para ver si los impuestos vienen incluidos en el precio
             $preciosConImpuesto = $this->scopeConfig->getValue('tax/calculation/price_includes_tax', \Magento\Store\Model\ScopeInterface::SCOPE_STORE); 
-
+            
             // Obtenemos la lista de impuestos aplicados a los items (Cada uno, incluyendo el cobro del envío)
             $tax_items = $this->taxItem->getTaxItemsByOrderId($order->getId()); 
-
+            
             // Procedemos a ordenar la lista por item
             $taxes = [];
             foreach($tax_items as $tax){
@@ -143,7 +152,7 @@ class One extends Action
                     'tax'            => 0,
                     'taxes'          => []
                 ];
-
+                
                 if(isset($product['iva_especial'])){
 
                     $especial = [];
@@ -311,7 +320,7 @@ class One extends Action
                 'descuento_calculado' => $descuento_calculado,
                 'impuestos_calculados' => $impuestos_calculados
             ];
-
+    
             if($pedido['currency'] != 'MXN'){
                 if($this->storeManager->getStore()->getBaseCurrencyCode() == $pedido['currency'] && $this->storeManager->getStore()->getCurrentCurrencyCode() == 'MXN'){
                     $pedido['tipo_cambio'] = $this->storeManager->getStore()->getCurrentCurrencyRate();
@@ -324,6 +333,7 @@ class One extends Action
             $this->cookieHelper->setCookie('order', json_encode($pedido));
             $this->cookieHelper->setCookie('customer', json_encode($customer));
             $this->cookieHelper->setCookie('line_items', json_encode($line_items));
+            
 
             $result->setData([
                 'error' => 200,
@@ -335,7 +345,7 @@ class One extends Action
                     'taxes_items' => $tax_items
                 ]
             ]);
-
+            
             return $result;
 
         }else{

@@ -1,24 +1,30 @@
-# Magento-Extension v 1.0.2
+# Magento-Extension v 1.0.3
 
-Esta actualización es importante, ya que con ella este Módulo es compatible con la facturación CFDI 4.0.
+Esta actualización es importante, ya que con ella este módulo es compatible con la facturación CFDI 4.0, ofreciendo nuevas funcionalidades y mejoras de compatibilidad.
 
 ## Change Log
 
-Magento es una solución de comercio electrónico de código abierto, que ofrece a todos los comerciantes y dueños de negocios online, un sistema de carrito de compras flexible, además de un control total sobre cada aspecto, contenido y funcionalidad de la tienda en línea.
+La extensión de Factura.com proporciona integración directa con la plataforma de facturación, brindando a los usuarios las siguientes características:
 
-La extensión de Factura.com proporciona integración con la plataforma de facturación que brinda Factura.com, la cual incluye las siguientes funciones:
-– Reporte de facturas creadas en el panel de administración.
-– Descargar PDF de facturas para consulta desde el panel de administración.
-– Funcionalidad para que los clientes creen facturas directamente desde el área de clientes.
+- Reporte de facturas creadas directamente en el panel de administración.
+- Descarga de facturas en formato PDF para consulta desde el panel de administración.
+- Creación de facturas por parte de los clientes desde el área de cliente.
 
-Este Módulo es compatible con Magento 2, probado en versiones 2.3.6 y 2.4.1
+## Compatibilidad
+Este módulo es compatible con Magento 2, probado en las versiones:
 
-Si requieres más información acerca de la instalación y el uso de este módulo para Magento, puedes contactarnos en https://factura.com/contacto o enviar un correo directamente a soporte@factura.com y con gusto te ayudaremos en lo que necesites.
+- **2.4.7** (nueva compatibilidad añadida en esta versión)
+- **2.4.1**
+- **2.3.6**
 
-1.0.2 Se ha corregido el orden de los parametros en la función de descarga
+Además, el módulo es ahora compatible con PHP hasta la versión 8.3.
 
-1.0.1 Se ha corregido el namespace de la clase DataProvider.php que causaba conflicto con sistemas operativos Linux
+## Detalles de la actualización
+
+- **v1.0.3**: Se ha implementado la compatibilidad con PHP hasta la versión 8.3 y con Magento 2 versión 2.4.7.
+- **v1.0.2**: Corregido el orden de los parámetros en la función de descarga de facturas.
+- **v1.0.1**: Corregido el namespace de la clase DataProvider.php que causaba conflicto en sistemas operativos Linux.
+
 
 ## Instalación
-Para su instalación utilice el manual en formato PDF incluido en este repositorio.
-
+Para la instalación, consulte el manual en formato PDF incluido en este repositorio. Si tiene alguna pregunta, no dude en contactarnos en soporte@factura.com o a través de nuestro sitio web Factura.com/contacto.

@@ -9,18 +9,20 @@ use Magento\Backend\App\Action;
 
 class Index extends Action
 {
-	protected $resultPageFactory = false;
+    protected $resultPageFactory;
+    protected $urlBuilder;
 
-	public function __construct(Context $context, PageFactory $resultPageFactory, UrlInterface $urlBuilder)
-	{
-		parent::__construct($context);
-		$this->resultPageFactory = $resultPageFactory;
-		$this->urlBuilder = $urlBuilder;
-	}
-	public function execute()
-	{
-    	$resultPage = $this->resultPageFactory->create();
-		$resultPage->getConfig()->getTitle()->prepend((__('Mis facturas')));
-		return $resultPage;
-	}
+    public function __construct(Context $context, PageFactory $resultPageFactory, UrlInterface $urlBuilder)
+    {
+        parent::__construct($context);
+        $this->resultPageFactory = $resultPageFactory;
+        $this->urlBuilder = $urlBuilder;
+    }
+
+    public function execute()
+    {
+        $resultPage = $this->resultPageFactory->create();
+        $resultPage->getConfig()->getTitle()->prepend((__('Mis facturas')));
+        return $resultPage;
+    }
 }
