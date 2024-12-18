@@ -54,6 +54,10 @@ class DataProvider extends AbstractDataProvider
 
         $data = $this->helper->getInvoices($pagesize, $pageCurrent, $filters);
 
+        $data['data'] = array_filter($data['data'], function($item) {
+            return isset($item['Status']) && $item['Status'] !== 'eliminada';
+        });
+
         if(is_null($data) || (isset($data['status']) && $data['status'] == "error")){ // Si hay algun error
             return ['totalRecords' => 0, 'items' => []];
         }

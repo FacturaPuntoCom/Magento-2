@@ -7,6 +7,7 @@ require ([
   //Front client area functions
   //vars
   var order_data, customer_data, invoice_data;
+  var clienteExiste = false;
 
   String.prototype.capitalize = function() {
     return this.replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
@@ -445,6 +446,7 @@ require ([
 
       if(customer_data.status == "success"){
         $('#f-step-two-form').children('#fiscal-rfc').val(customer_data.Data.RFC);
+        clienteExiste = true;
       }
 
       if(customer_data.status != "error"){
@@ -452,6 +454,7 @@ require ([
       }else{
         $('#step-two-button-edit').hide();
         enableFormTwo(true);
+        clienteExiste = false;
       }
 
       $('#step-one').stop().hide();
@@ -487,6 +490,10 @@ require ([
       f_nombre      : form_data[posicion++].value,
       f_rfc         : form_data[posicion++].value
     };
+
+    if(clienteExiste) {
+      data.api_method = "update";
+    }
     
     if (form_data[8].name == 'fiscal-regimen'){
       data.f_regimen = form_data[posicion++].value;
@@ -553,7 +560,18 @@ require ([
         });
         return false;
       }
+
+      if (!/^\d{4}$/.test(num_account)) {
+        $("#step-three .loader_content").hide();
+        alert({
+          title: 'Formato inválido',
+          content: `<p>Para tarjeta de crédito/débito o transferencia electrónica, se deben enviar los últimos 4 dígitos numericos de la tarjeta o referencia.</p>`,
+          modalClass: 'alert',
+        });
+        return false;
+      }
     }
+
 
     data = {
       payment_m     : selected_method_t,
