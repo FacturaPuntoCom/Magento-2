@@ -1,3 +1,7 @@
+# Magento-Extension v 1.0.4 (fix menor)
+
+Se elimina el problema que causa clientes duplicados en panel de factura, se vuelven obligatorios 4 digitos para pago por transferencia o tarjeta credito/debito y se eliminan los borradores eliminados del historial de facturas
+
 # Magento-Extension v 1.0.3
 
 Esta actualización es importante, ya que con ella este módulo es compatible con la facturación CFDI 4.0, ofreciendo nuevas funcionalidades y mejoras de compatibilidad.
@@ -21,6 +25,7 @@ Además, el módulo es ahora compatible con PHP hasta la versión 8.3.
 
 ## Detalles de la actualización
 
+- **v1.0.4**: Fix menor
 - **v1.0.3**: Se ha implementado la compatibilidad con PHP hasta la versión 8.3 y con Magento 2 versión 2.4.7.
 - **v1.0.2**: Corregido el orden de los parámetros en la función de descarga de facturas.
 - **v1.0.1**: Corregido el namespace de la clase DataProvider.php que causaba conflicto en sistemas operativos Linux.
